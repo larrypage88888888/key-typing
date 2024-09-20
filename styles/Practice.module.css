@@ -1,0 +1,211 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  /* 可以根据需要添加更多样式 */
+}
+
+.footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.backButton {
+  padding: 15px 30px;
+  font-size: 18px;
+  background: linear-gradient(45deg, #ff00ff, #00ffff);
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.backButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.targetWord {
+  font-size: 24px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.correct {
+  color: #00ff00;
+}
+
+.incorrect {
+  color: #ff0000;
+}
+
+.inputField {
+  font-size: 18px;
+  padding: 10px;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 400px;
+}
+
+.stats p {
+  font-size: 18px;
+}
+
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 1000;
+}
+
+.dialog h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.dialog p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.dialogButtons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.dialogButtons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: linear-gradient(45deg, #ff00ff, #00ffff);
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dialogButtons button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.keyboard {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.keyboardRow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.key {
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2px;
+  border-radius: 5px;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.keyPressed {
+  background-color: #00ff00;
+  color: #000;
+  transform: scale(0.95);
+}
+
+.keyHighlighted {
+  background-color: #ffa500; /* 橙色 */
+  color: #000;
+}
+
+.current {
+  color: #ffa500; /* 橙色 */
+}
+
+.cursor {
+  border-bottom: 2px solid #ffa500; /* 橙色下划线 */
+}
+
+.charContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 5px;
+}
+
+.fingerInstruction {
+  font-size: 16px;
+  color: #ffa500; /* 橙色 */
+  height: 24px; /* 固定高度 */
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.targetWordContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.targetChar {
+  font-size: 24px;
+  letter-spacing: 2px;
+  margin: 0 2px;
+}
+
+.spaceChar {
+  margin: 0 8px; /* 增加空格的左右边距 */
+  width: 16px; /* 给空格一个固定宽度 */
+  display: inline-block; /* 使宽度生效 */
+}
+
+.spaceKey {
+  width: 280px; /* 调整这个值以覆盖从Z到M的距离 */
+  margin: 0 2px; /* 保持与其他键的间距一致 */
+}
