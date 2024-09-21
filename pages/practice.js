@@ -36,8 +36,10 @@ export default function Practice() {
       const words = wordLists[subType];
       const selectedWords = [];
       for (let i = 0; i < 8; i++) {
-        const randomIndex = Math.floor(Math.random() * words.length);
-        selectedWords.push(words[randomIndex]);
+        if(words){
+            const randomIndex = Math.floor(Math.random() * words.length);
+            selectedWords.push(words[randomIndex]);    
+        }
       }
       word = selectedWords.join(' ');
     } else {
@@ -239,9 +241,14 @@ export default function Practice() {
   }
 
   const handleNextLevel = () => {
-    const currentIndex = subTypes.indexOf(subType)
+    const currentIndex = subTypes.findIndex(st => st === subType)
+    console.log(1111)
+    console.log("currentIndex",currentIndex)
+    console.log("subTypes",subTypes)
+    console.log("subType",subType)
     dialogRef.current.style.display = 'none'
     setUserInput('')
+
     setCorrectCount(0)
     setIncorrectCount(0)
     setTotalCount(0)
@@ -250,7 +257,8 @@ export default function Practice() {
     if (currentIndex < subTypes.length - 1) {
       const nextSubType = subTypes[currentIndex + 1]
       subType = nextSubType
-      router.push(`/practice?type=${type}&subType=${nextSubType}`, undefined, { shallow: true }).then(() => {
+      
+      router.push(`/practice?type=${encodeURIComponent(type)}&subType=${encodeURIComponent(nextSubType)}`, undefined, { shallow: true }).then(() => {
         generateTargetWord(nextSubType)
       })
     } else {
@@ -313,10 +321,10 @@ export default function Practice() {
   }
 
   const handlePreviousLevel = () => {
-    const currentIndex = subTypes.indexOf(subType)
+    const currentIndex = subTypes.findIndex(st => st === subType)
     if (currentIndex > 0) {
       const previousSubType = subTypes[currentIndex - 1]
-      router.push(`/practice?type=${type}&subType=${previousSubType}`, undefined, { shallow: true }).then(() => {
+      router.push(`/practice?type=${encodeURIComponent(type)}&subType=${encodeURIComponent(previousSubType)}`, undefined, { shallow: true }).then(() => {
         generateTargetWord(previousSubType)
       })
     }
@@ -376,7 +384,7 @@ export default function Practice() {
         <button 
           className={`${styles.navButton} ${styles.prevButton}`} 
           onClick={handlePreviousLevel}
-          disabled={subTypes.indexOf(subType) === 0}
+          disabled={subTypes.findIndex(st => st === subType) === 0}
         >
           上一关
         </button>
@@ -384,7 +392,7 @@ export default function Practice() {
         <button 
           className={`${styles.navButton} ${styles.nextButton}`} 
           onClick={handleNextLevel}
-          disabled={subTypes.indexOf(subType) === subTypes.length - 1}
+          disabled={subTypes.findIndex(st => st === subType) === subTypes.length - 1}
         >
           下一关
         </button>
