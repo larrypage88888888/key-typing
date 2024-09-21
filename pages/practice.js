@@ -15,54 +15,7 @@ export default function Practice() {
   const dialogRef = useRef(null)
   const [pressedKeys, setPressedKeys] = useState([])
 
-  useEffect(() => {
-    if (router.isReady && type && subType) {
-      generateTargetWord(subType)
-      setUserInput('')
-      setCorrectCount(0)
-      setIncorrectCount(0)
-      setTotalCount(0)
-      setAccuracy(0)
-      if (inputRef.current) {
-        inputRef.current.focus()
-      }
-    }
-
-    // 添加键盘事件监听器
-    window.addEventListener('keydown', handleKeyDown)
-    window.addEventListener('keyup', handleKeyUp)
-    window.addEventListener('keydown', handleKeyboardShortcuts)
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-      window.removeEventListener('keyup', handleKeyUp)
-      window.removeEventListener('keydown', handleKeyboardShortcuts)
-    }
-  }, [type, subType, router.isReady])
-
-  const handleKeyDown = (e) => {
-    setPressedKeys(prev => [...new Set([...prev, e.key.toLowerCase()])])
-  }
-
-  const handleKeyUp = (e) => {
-    setPressedKeys(prev => prev.filter(key => key !== e.key.toLowerCase()))
-  }
-
-  const handleKeyboardShortcuts = useCallback((e) => {
-    const dialogVisible = dialogRef.current && window.getComputedStyle(dialogRef.current).display !== 'none'
-    const inputFocused = document.activeElement !== inputRef.current
-
-    if (dialogVisible && inputFocused) {
-      if (e.key === 'r' || e.key === 'R') {
-        e.preventDefault()
-        handleRestart()
-      } else if (e.key === 'Enter') {
-        e.preventDefault()
-        handleNextLevel()
-      }
-    }
-  }, [])
-
-  const generateTargetWord = (subType) => {
+  const generateTargetWord = useCallback((subType) => {
     let word;
 
     if (type === '编程练习' || type === '单词练习') {
@@ -202,7 +155,54 @@ export default function Practice() {
     }
 
     setTargetWord(word)
+  }, [type])
+
+  useEffect(() => {
+    if (router.isReady && type && subType) {
+      generateTargetWord(subType)
+      setUserInput('')
+      setCorrectCount(0)
+      setIncorrectCount(0)
+      setTotalCount(0)
+      setAccuracy(0)
+      if (inputRef.current) {
+        inputRef.current.focus()
+      }
+    }
+
+    // 添加键盘事件监听器
+    window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('keyup', handleKeyUp)
+    window.addEventListener('keydown', handleKeyboardShortcuts)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('keyup', handleKeyUp)
+      window.removeEventListener('keydown', handleKeyboardShortcuts)
+    }
+  }, [type, subType, router.isReady])
+
+  const handleKeyDown = (e) => {
+    setPressedKeys(prev => [...new Set([...prev, e.key.toLowerCase()])])
   }
+
+  const handleKeyUp = (e) => {
+    setPressedKeys(prev => prev.filter(key => key !== e.key.toLowerCase()))
+  }
+
+  const handleKeyboardShortcuts = useCallback((e) => {
+    const dialogVisible = dialogRef.current && window.getComputedStyle(dialogRef.current).display !== 'none'
+    const inputFocused = document.activeElement !== inputRef.current
+
+    if (dialogVisible && inputFocused) {
+      if (e.key === 'r' || e.key === 'R') {
+        e.preventDefault()
+        handleRestart()
+      } else if (e.key === 'Enter') {
+        handleNextLevel()
+        e.preventDefault()
+      }
+    }
+  }, [])
 
   const handleInputChange = (e) => {
     const input = e.target.value
@@ -218,7 +218,7 @@ export default function Practice() {
     setCorrectCount(correct)
     setIncorrectCount(input.length - correct)
 
-    if (input === targetWord) {
+    if (input.length === targetWord.length) {
       const accuracyValue = (correct / targetWord.length) * 100
       setAccuracy(accuracyValue.toFixed(2))
       inputRef.current.blur()
@@ -249,7 +249,10 @@ export default function Practice() {
 
     if (currentIndex < subTypes.length - 1) {
       const nextSubType = subTypes[currentIndex + 1]
-      router.push(`/practice?type=${type}&subType=${nextSubType}`)
+      subType = nextSubType
+      router.push(`/practice?type=${type}&subType=${nextSubType}`, undefined, { shallow: true }).then(() => {
+        generateTargetWord(nextSubType)
+      })
     } else {
       router.push('/learn')
     }
@@ -309,6 +312,16 @@ export default function Practice() {
     return fingerMap[char.toLowerCase()] || '未知'
   }
 
+  const handlePreviousLevel = () => {
+    const currentIndex = subTypes.indexOf(subType)
+    if (currentIndex > 0) {
+      const previousSubType = subTypes[currentIndex - 1]
+      router.push(`/practice?type=${type}&subType=${previousSubType}`, undefined, { shallow: true }).then(() => {
+        generateTargetWord(previousSubType)
+      })
+    }
+  }
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -348,6 +361,7 @@ export default function Practice() {
           value={userInput}
           onChange={handleInputChange}
           className={styles.inputField}
+          maxLength={targetWord.length}
         />
         <div className={styles.stats}>
           <p>正确: {correctCount}</p>
@@ -359,7 +373,21 @@ export default function Practice() {
       </main>
 
       <footer className={styles.footer}>
+        <button 
+          className={`${styles.navButton} ${styles.prevButton}`} 
+          onClick={handlePreviousLevel}
+          disabled={subTypes.indexOf(subType) === 0}
+        >
+          上一关
+        </button>
         <button className={styles.backButton} onClick={handleBackToLearn}>返回</button>
+        <button 
+          className={`${styles.navButton} ${styles.nextButton}`} 
+          onClick={handleNextLevel}
+          disabled={subTypes.indexOf(subType) === subTypes.length - 1}
+        >
+          下一关
+        </button>
       </footer>
 
       <div ref={dialogRef} className={styles.dialog} style={{display: 'none'}}>

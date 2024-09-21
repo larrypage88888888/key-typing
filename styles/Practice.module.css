@@ -25,7 +25,10 @@
 
 .footer {
   margin-top: 20px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .backButton {
@@ -208,4 +211,40 @@
 .spaceKey {
   width: 280px; /* 调整这个值以覆盖从Z到M的距离 */
   margin: 0 2px; /* 保持与其他键的间距一致 */
+}
+
+.navButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: linear-gradient(45deg, #ff00ff, #00ffff);
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.navButton:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.navButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.prevButton {
+  order: 1;
+}
+
+.backButton {
+  order: 2;
+}
+
+.nextButton {
+  order: 3;
 }
