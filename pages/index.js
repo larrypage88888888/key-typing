@@ -12,9 +12,20 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Key-Typing</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet" />
+        <title>你的网站标题 - 关键词1, 关键词2, 关键词3</title>
+        <meta name="description" content="打字练习，提升打字速度和准确性" />
+        <meta name="keywords" content="打字, typing, key-typing" />
+        <meta name="author" content="typing" />
+        <meta property="og:title" content="key-typing - 一个打字练习网站" />
+        <meta property="og:description" content="这是一个关于打字练习, 提高打字速度和准确性的网站。" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://key-typing.com" />
+        <meta property="og:image" content="//public/logo93.png" />
+
+        <meta name="twitter:title" content="打字练习，提升打字速度和准确性" />
+
+        <meta name="twitter:description" content="这是一个关于打字练习, 提高打字速度和准确性的网站。" />
+        <meta name="twitter:image" content="//public/logo93.png" />
       </Head>
 
       <header className={styles.header}>
