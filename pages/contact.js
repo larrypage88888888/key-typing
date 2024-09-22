@@ -14,18 +14,18 @@ export default function Contact() {
       <header className={styles.header}>
         <div className={styles.logo}>Key-Typing</div>
         <nav>
-          <a href="/">首页</a>
-          <a href="/about">关于</a>
-          <a href="/contact">联系</a>
+          <a href="/" className={styles.navLink}>首页</a>
+          <a href="/about" className={styles.navLink}>关于</a>
+          <a href="/contact" className={styles.navLink}>联系</a>
         </nav>
       </header>
 
       <main className={styles.main}>
-        <h1>联系我们</h1>
-        <p>如果您有任何问题或建议，请通过以下方式联系我们：</p>
-        <ul>
-          <li>电子邮件: support@key-typing.com</li>
-          <li>电话: 123-456-7890</li>
+        <h1 className={styles.contactTitle}>联系我们</h1>
+        <p className={styles.contactText}>如果您有任何问题或建议，请通过以下方式联系我们：</p>
+        <ul className={styles.contactList}>
+          <li className={styles.contactListItem}>电子邮件: support@key-typing.com</li>
+          <li className={styles.contactListItem}>电话: 123-456-7890</li>
         </ul>
       </main>
     </div>

@@ -78,8 +78,8 @@ export default function Learn() {
         <div className={styles.logo}>Key-Typing</div>
         <nav>
           <a href="/">首页</a>
-          <a href="#about">关于</a>
-          <a href="#contact">联系</a>
+          <a href="/about">关于</a>
+          <a href="/contact">联系</a>
         </nav>
       </header>
 

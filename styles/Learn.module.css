@@ -12,11 +12,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .logo {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -26,16 +26,16 @@
 }
 
 .hero {
-  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-top: 20px; /* 调整方块的位置 */
 }
 
 .typewriter {
-  font-size: 72px;
+  font-size: 32px;
   margin-bottom: 20px;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   overflow: hidden;
@@ -66,8 +66,8 @@
 }
 
 .backButton {
-  margin-top: 30px;
-  padding: 15px 30px;
+  margin-top: 20px;
+  padding: 10px 20px;
   font-size: 18px;
   background: linear-gradient(45deg, #ff00ff, #00ffff);
   color: #000;
@@ -90,12 +90,17 @@
 .practiceTypes {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 30px;
+  gap: 10px;
+  margin-top: 30px; /* 减少顶部外边距 */
 }
 
 .practiceBox {
+  padding: 20px;
+  border: 1px solid #000;
+  cursor: pointer;
+  text-align: center;
+  flex: 1 1 calc(25% - 20px);
+  box-sizing: border-box;
   width: 200px;
   height: 150px;
   background-color: #f0f0f0;
@@ -105,7 +110,6 @@
   align-items: center;
   font-size: 18px;
   font-weight: bold;
-  cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -173,6 +177,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-top: 20px;
 }
 
 .subMenu h2 {

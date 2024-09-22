@@ -12,10 +12,20 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Key-Typing</title>
-        <meta name="description" content="提升打字速度和准确性的网站" />
-        <meta name="keywords" content="打字练习, 提升打字速度, 提高打字准确性" />
-        <meta name="author" content="Key-Typing" />
+        <title>你的网站标题 - 关键词1, 关键词2, 关键词3</title>
+        <meta name="description" content="打字练习，提升打字速度和准确性" />
+        <meta name="keywords" content="打字, typing, key-typing" />
+        <meta name="author" content="typing" />
+        <meta property="og:title" content="key-typing - 一个打字练习网站" />
+        <meta property="og:description" content="这是一个关于打字练习, 提高打字速度和准确性的网站。" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://key-typing.com" />
+        <meta property="og:image" content="//public/logo93.png" />
+
+        <meta name="twitter:title" content="打字练习，提升打字速度和准确性" />
+
+        <meta name="twitter:description" content="这是一个关于打字练习, 提高打字速度和准确性的网站。" />
+        <meta name="twitter:image" content="//public/logo93.png" />
       </Head>
 
       <header className={styles.header}>
@@ -27,9 +37,12 @@ export default function Home() {
         </nav>
       </header>
 
-      <main className={styles.main}>
-        <h1>欢迎来到 Key-Typing</h1>
-        <p>这里是一个简洁而有趣的打字练习网站，提升您的打字速度和准确性</p>
+      <main>
+        <section className={styles.hero}>
+          <h1 className={styles.typewriter}>欢迎来到 Key-Typing</h1>
+          <p>这里是一个简洁而有趣的打字练习网站，提升您的打字速度和准确性</p>
+          <button className={styles.startButton} onClick={handleStartLearning}>开始学习</button>
+        </section>
       </main>
     </div>
   )

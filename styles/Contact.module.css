@@ -14,7 +14,7 @@
   font-weight: bold;
 }
 
-nav a {
+.navLink {
   margin: 0 10px;
   text-decoration: none;
   color: #000;
@@ -24,22 +24,22 @@ nav a {
   padding: 20px 0;
 }
 
-h1 {
+.contactTitle {
   font-size: 32px;
   margin-bottom: 20px;
 }
 
-p {
+.contactText {
   font-size: 18px;
   line-height: 1.6;
 }
 
-ul {
+.contactList {
   list-style-type: none;
   padding: 0;
 }
 
-li {
+.contactListItem {
   font-size: 18px;
   margin-bottom: 10px;
 }

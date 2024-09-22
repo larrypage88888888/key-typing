@@ -14,7 +14,7 @@
   font-weight: bold;
 }
 
-nav a {
+.navLink {
   margin: 0 10px;
   text-decoration: none;
   color: #000;
@@ -24,12 +24,12 @@ nav a {
   padding: 20px 0;
 }
 
-h1 {
+.aboutTitle {
   font-size: 32px;
   margin-bottom: 20px;
 }
 
-p {
+.aboutText {
   font-size: 18px;
   line-height: 1.6;
 }
