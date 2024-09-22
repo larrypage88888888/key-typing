@@ -27,12 +27,15 @@ export default function Learn() {
     // 这里根据不同的练习类型定义子菜单项
     const subMenuItems = {
       '指法练习': [
-        'FJ', 'DK','FJDK', 'SL', 'A;','SLA;',
-        'GH', 'TY', 'ER', 'UO',
-        'WI', 'QP', 'VM', 'XN',
-
-        'ZB', 'C,', '/.', '空格',
-        '数字行', '符号键', '功能键'
+        'FJ', 'DK','FJDK', 
+        'SL', 'A;','SLA;',
+        'GH', 'TY', 'GHTY',
+        'ER', 'UO', 'ERUO',
+        'WI', 'QP', 'WIQP',
+        'VM', 'XN', 'VMXN',
+        'ZB', 'C,', 'C,ZB',
+        '/.', '空格',
+        '数字行', '符号键','全键盘'
       ],
       '编程练习': ['Python', 'JavaScript', 'Java', 'C++', 'Ruby', 'Go'],
       '单词练习': ['初级词汇', '中级词汇', '高级词汇', '专业词汇', '俚语词汇'],
@@ -57,9 +60,18 @@ export default function Learn() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>学习 - Key-Typing</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet" />
+        <title>学习打字 - 提升打字技能</title>
+        <meta name="description" content="通过我们的课程学习打字，提升您的打字技能。" />
+        <meta name="keywords" content="学习打字, 打字课程, 提升打字技能" />
+        <meta name="author" content="typing" />
+        <meta property="og:title" content="学习打字 - 提升打字技能" />
+        <meta property="og:description" content="通过我们的课程学习打字，提升您的打字技能。" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://key-typing.com/learn" />
+        <meta property="og:image" content="//public/logo93.png" />
+        <meta name="twitter:title" content="学习打字 - 提升打字技能" />
+        <meta name="twitter:description" content="通过我们的课程学习打字，提升您的打字技能。" />
+        <meta name="twitter:image" content="//public/logo93.png" />
       </Head>
 
       <header className={styles.header}>

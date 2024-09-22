@@ -72,11 +72,17 @@ export default function Practice() {
         case 'TY':
           chars = 'ty'
           break
+        case 'GHTY':
+          chars = 'ghty'
+          break
         case 'ER':
           chars = 'er'
           break
         case 'UO':
           chars = 'uo'
+          break
+        case 'ERUO':
+          chars = 'eruo'
           break
         case 'WI':
           chars = 'wi'
@@ -84,17 +90,26 @@ export default function Practice() {
         case 'QP':
           chars = 'qp'
           break
+        case 'WIQP':
+          chars = 'wiqp'
+          break
         case 'VM':
           chars = 'vm'
           break
         case 'XN':
           chars = 'xn'
           break
+        case 'VMXN':
+          chars = 'vmxn'
+          break
         case 'ZB':
           chars = 'zb'
           break
         case 'C,':
           chars = 'c,'
+          break
+        case 'C,ZB':
+          chars = 'c,zb'
           break
         case '/.':
           chars = '/.'
@@ -425,4 +440,4 @@ export default function Practice() {
 }
 
 // 定义所有可能的 subTypes
-const subTypes = ['FJ', 'DK', 'FJDK', 'SL', 'A;', 'SLA;', 'GH', 'TY', 'ER', 'UO', 'WI', 'QP', 'VM', 'XN', 'ZB', 'C,', '/.', '空格', '数字行', '符号键', '功能键', 'Python', 'JavaScript', 'Java', 'C++', 'Ruby', 'Go', '初级词汇', '中级词汇', '高级词汇', '专业词汇', '俚语词汇', '唐诗', '宋词', '元曲', '现代诗', '古文']
+const subTypes = ['FJ', 'DK', 'FJDK', 'SL', 'A;', 'SLA;', 'GH', 'TY', 'GHTY', 'ER', 'UO','ERUO', 'WI', 'QP','WIQP', 'VM', 'XN','VMXN', 'ZB', 'C,','C,ZB', '/.', '空格', '数字行', '符号键','全键盘', 'Python', 'JavaScript', 'Java', 'C++', 'Ruby', 'Go', '初级词汇', '中级词汇', '高级词汇', '专业词汇', '俚语词汇', '唐诗', '宋词', '元曲', '现代诗', '古文']
