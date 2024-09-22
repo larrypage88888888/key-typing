@@ -27,9 +27,10 @@ export default function Learn() {
     // 这里根据不同的练习类型定义子菜单项
     const subMenuItems = {
       '指法练习': [
-        'FJ', 'DK', 'SL', 'A;',
+        'FJ', 'DK','FJDK', 'SL', 'A;','SLA;',
         'GH', 'TY', 'ER', 'UO',
         'WI', 'QP', 'VM', 'XN',
+
         'ZB', 'C,', '/.', '空格',
         '数字行', '符号键', '功能键'
       ],

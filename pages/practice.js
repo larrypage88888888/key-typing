@@ -18,6 +18,9 @@ export default function Practice() {
   const generateTargetWord = useCallback((subType) => {
     let word;
 
+
+
+
     if (type === '编程练习' || type === '单词练习') {
       const wordLists = {
         'Python': ['def', 'import', 'print', 'from', 'as', 'if', 'else', 'elif', 'for', 'while', 'break', 'continue', 'return', 'class', 'try', 'except', 'finally', 'with', 'lambda', 'yield', 'global'],
@@ -36,9 +39,9 @@ export default function Practice() {
       const words = wordLists[subType];
       const selectedWords = [];
       for (let i = 0; i < 8; i++) {
-        if(words){
-            const randomIndex = Math.floor(Math.random() * words.length);
-            selectedWords.push(words[randomIndex]);    
+        if (words) {
+          const randomIndex = Math.floor(Math.random() * words.length);
+          selectedWords.push(words[randomIndex]);
         }
       }
       word = selectedWords.join(' ');
@@ -51,11 +54,17 @@ export default function Practice() {
         case 'DK':
           chars = 'dk'
           break
+        case 'FJDK':
+          chars = 'fjdk'
+          break
         case 'SL':
           chars = 'sl'
           break
         case 'A;':
           chars = 'a;'
+          break
+        case 'SLA;':
+          chars = 'sla;'
           break
         case 'GH':
           chars = 'gh'
@@ -153,7 +162,12 @@ export default function Practice() {
         default:
           chars = 'abcdefghijklmnopqrstuvwxyz,./'
       }
-      word = Array(15).fill().map(() => chars[Math.floor(Math.random() * chars.length)]).join('')
+      if (type === '诗词歌赋') {
+        word = chars
+      } else {
+        word = Array(15).fill().map(() => chars[Math.floor(Math.random() * chars.length)]).join('')
+      }
+
     }
 
     setTargetWord(word)
@@ -243,9 +257,9 @@ export default function Practice() {
   const handleNextLevel = () => {
     const currentIndex = subTypes.findIndex(st => st === subType)
     console.log(1111)
-    console.log("currentIndex",currentIndex)
-    console.log("subTypes",subTypes)
-    console.log("subType",subType)
+    console.log("currentIndex", currentIndex)
+    console.log("subTypes", subTypes)
+    console.log("subType", subType)
     dialogRef.current.style.display = 'none'
     setUserInput('')
 
@@ -257,7 +271,7 @@ export default function Practice() {
     if (currentIndex < subTypes.length - 1) {
       const nextSubType = subTypes[currentIndex + 1]
       subType = nextSubType
-      
+
       router.push(`/practice?type=${encodeURIComponent(type)}&subType=${encodeURIComponent(nextSubType)}`, undefined, { shallow: true }).then(() => {
         generateTargetWord(nextSubType)
       })
@@ -343,7 +357,7 @@ export default function Practice() {
         <div className={styles.targetWordContainer}>
           请输入：
           {targetWord.split('').map((char, index) => (
-            <span 
+            <span
               key={index}
               className={`
                 ${styles.targetChar}
@@ -381,16 +395,16 @@ export default function Practice() {
       </main>
 
       <footer className={styles.footer}>
-        <button 
-          className={`${styles.navButton} ${styles.prevButton}`} 
+        <button
+          className={`${styles.navButton} ${styles.prevButton}`}
           onClick={handlePreviousLevel}
           disabled={subTypes.findIndex(st => st === subType) === 0}
         >
           上一关
         </button>
         <button className={styles.backButton} onClick={handleBackToLearn}>返回</button>
-        <button 
-          className={`${styles.navButton} ${styles.nextButton}`} 
+        <button
+          className={`${styles.navButton} ${styles.nextButton}`}
           onClick={handleNextLevel}
           disabled={subTypes.findIndex(st => st === subType) === subTypes.length - 1}
         >
@@ -398,7 +412,7 @@ export default function Practice() {
         </button>
       </footer>
 
-      <div ref={dialogRef} className={styles.dialog} style={{display: 'none'}}>
+      <div ref={dialogRef} className={styles.dialog} style={{ display: 'none' }}>
         <h2>恭喜完成！</h2>
         <p>正确率: {accuracy}%</p>
         <div className={styles.dialogButtons}>
@@ -411,4 +425,4 @@ export default function Practice() {
 }
 
 // 定义所有可能的 subTypes
-const subTypes = ['FJ', 'DK', 'SL', 'A;', 'GH', 'TY', 'ER', 'UO', 'WI', 'QP', 'VM', 'XN', 'ZB', 'C,', '/.', '空格', '数字行', '符号键', '功能键', 'Python', 'JavaScript', 'Java', 'C++', 'Ruby', 'Go', '初级词汇', '中级词汇', '高级词汇', '专业词汇', '俚语词汇', '唐诗', '宋词', '元曲', '现代诗', '古文']
+const subTypes = ['FJ', 'DK', 'FJDK', 'SL', 'A;', 'SLA;', 'GH', 'TY', 'ER', 'UO', 'WI', 'QP', 'VM', 'XN', 'ZB', 'C,', '/.', '空格', '数字行', '符号键', '功能键', 'Python', 'JavaScript', 'Java', 'C++', 'Ruby', 'Go', '初级词汇', '中级词汇', '高级词汇', '专业词汇', '俚语词汇', '唐诗', '宋词', '元曲', '现代诗', '古文']
