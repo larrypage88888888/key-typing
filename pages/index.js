@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>你的网站标题 - 关键词1, 关键词2, 关键词3</title>
+        <title>打字练习，提升打字速度和准确性</title>
         <meta name="description" content="打字练习，提升打字速度和准确性" />
         <meta name="keywords" content="打字, typing, key-typing" />
         <meta name="author" content="typing" />
