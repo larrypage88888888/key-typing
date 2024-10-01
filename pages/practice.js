@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import styles from '../styles/Practice.module.css'
+import Navbar from '../components/Navbar.js'; // 引入 Navbar 组件
 
 export default function Practice() {
   const router = useRouter()
@@ -14,6 +15,19 @@ export default function Practice() {
   const inputRef = useRef(null)
   const dialogRef = useRef(null)
   const [pressedKeys, setPressedKeys] = useState([])
+
+  const subTypes = [
+    'FJ', 'DK', 'FJDK',
+    'SL', 'A;', 'SLA;',
+    'GH', 'TY', 'GHTY',
+    'ER', 'UO', 'ERUO',
+    'WI', 'QP', 'WIQP',
+    'VM', 'XN', 'VMXN',
+    'ZB', 'C,', 'C,ZB',
+    '/.', '空格',
+    '数字行', '符号键', '全键盘',
+    '打字游戏' // 确保这里也包含打字游戏
+  ]
 
   const generateTargetWord = useCallback((subType) => {
     let word;
@@ -361,9 +375,7 @@ export default function Practice() {
 
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
-        <h1>{type} - {subType}</h1>
-      </header>
+      <Navbar /> {/* 添加 Navbar 组件 */}
 
       <main className={styles.main}>
         <div className={styles.fingerInstruction}>
@@ -438,6 +450,3 @@ export default function Practice() {
     </div>
   )
 }
-
-// 定义所有可能的 subTypes
-const subTypes = ['FJ', 'DK', 'FJDK', 'SL', 'A;', 'SLA;', 'GH', 'TY', 'GHTY', 'ER', 'UO','ERUO', 'WI', 'QP','WIQP', 'VM', 'XN','VMXN', 'ZB', 'C,','C,ZB', '/.', '空格', '数字行', '符号键','全键盘', 'Python', 'JavaScript', 'Java', 'C++', 'Ruby', 'Go', '初级词汇', '中级词汇', '高级词汇', '专业词汇', '俚语词汇', '唐诗', '宋词', '元曲', '现代诗', '古文']

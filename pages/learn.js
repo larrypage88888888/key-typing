@@ -2,6 +2,8 @@ import Head from 'next/head'
 import styles from '../styles/Learn.module.css'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import Navbar from '../components/Navbar.js'; // 引入 Navbar 组件
+
 
 export default function Learn() {
   const router = useRouter()
@@ -39,7 +41,7 @@ export default function Learn() {
       ],
       '编程练习': ['Python', 'JavaScript', 'Java', 'C++', 'Ruby', 'Go'],
       '单词练习': ['初级词汇', '中级词汇', '高级词汇', '专业词汇', '俚语词汇'],
-      '诗词歌赋': ['唐诗', '宋词', '元曲', '现代诗', '古文']
+      '打字游戏': ['唐诗', '宋词', '元曲', '现代诗', '古文'] // 修改这里
     }
 
     return (
@@ -74,14 +76,7 @@ export default function Learn() {
         <meta name="twitter:image" content="//public/logo93.png" />
       </Head>
 
-      <header className={styles.header}>
-        <div className={styles.logo}>Key-Typing</div>
-        <nav>
-          <a href="/">首页</a>
-          <a href="/about">关于</a>
-          <a href="/contact">联系</a>
-        </nav>
-      </header>
+      <Navbar></Navbar>
 
       <main>
         <section className={styles.hero}>
@@ -91,7 +86,7 @@ export default function Learn() {
             renderSubMenu(selectedPractice)
           ) : (
             <div className={styles.practiceTypes}>
-              {['指法练习', '编程练习', '单词练习', '诗词歌赋'].map((practice, index) => (
+              {['指法练习', '编程练习', '单词练习', '打字游戏'].map((practice, index) => (
                 <div key={index} className={styles.practiceBox} onClick={() => handlePracticeClick(practice)}>
                   <span>{practice}</span>
                 </div>
